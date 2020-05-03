@@ -1,5 +1,6 @@
 # SPLAE
- Segement Prostate Like An Expert
+ Segement Prostate Like An Expert by Jeffrey Liu.
+ Playing with the promise12 dataset.
 
 Dice Score 0.7825447279440513
 
