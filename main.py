@@ -298,5 +298,5 @@ for example_index in range(10):
 
     title = f'Name: {image_index}.png   Dice Score: {d_score:.5f}'
     # save_path = os.path.join('images',f'{d_score:.5f}_{image_index}.png')
-    visualize_result(image, mask, output, title)
-    print('Predictions has been saved to predictions.png')
+    visualize_result(image, mask, output, title, example_index)
+    print('Predictions has been saved to predictions+(num_of_pred).png')

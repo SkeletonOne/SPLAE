@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def visualize_result(image, mask, output, title, transparency = 0.38):
+def visualize_result(image, mask, output, title, example_index, transparency = 0.38):
     '''
     Plots a 2x3 plot with comparisons of output and original image.
     Works best with Jupyter Notebook/Lab.
@@ -53,4 +53,4 @@ def visualize_result(image, mask, output, title, transparency = 0.38):
     axs[1][2].set_axis_off()
 
     plt.tight_layout()
-    plt.savefig('Predictions.png', dpi = 90, bbox_inches = 'tight')
+    plt.savefig('Predictions'+str(example_index)+'.png', dpi = 90, bbox_inches = 'tight')
