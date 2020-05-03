@@ -4,3 +4,6 @@
 Dice Score 0.7825447279440513
 ![Loss Graph](losss.png)
 ![Segment Result](segres.png)
+
+# Acknowlegement
+This project is mainly based on [Brain Tumor Segmentation](https://github.com/sdsubhajitdas/Brain-Tumor-Segmentation) by Subhajit Das. Appreciate for his great work.
