@@ -23,13 +23,13 @@ save_path = './imgs/'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-print('Computation Details')
+print('\033[1;36mComputation Details: \033[0m')
 if device == torch.device('cpu'):
     print('No GPU available. Using CPU')
 else:
     print(f'\tDevice Used: ({device})  {torch.cuda.get_device_name(torch.cuda.current_device())}\n')
 
-print('Packages Used Versions:-')
+print('\033[1;36mPackages Used Versions: \033[0m')
 print(f'\tPytorch Version: {torch.__version__}')
 # Dataset folder used
 DATASET_PATH = os.path.join('./imgs/')
@@ -47,9 +47,9 @@ loss = 'bce'
 
 if not os.path.isdir(save_path):
     os.makedirs(save_path)
-    print('Generating .png imgs from .mhd files.')
+    print('\033[1;35mGenerating .png imgs from .mhd files. \033[0m')
     generate_2D_imgs(file_path, save_path)
-    print('Generate finished.')
+    print('\033[1;35mGenerate finished. \033[0m')
 else:
     print('Training images already exist. No need to generate them again.')
 
@@ -101,7 +101,7 @@ optimizer = optim.Adam(unet_model.parameters(), lr = learning_rate)
 # Reducing LR on plateau feature to improve training.
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor = 0.85, patience = 10, verbose = True)
 
-print('Starting Training Process')
+print('\033[1;34mStarting Training Process \033[0m')
 
 assert validationloader.batch_size == 1
 
@@ -232,6 +232,8 @@ plt.savefig('loss.png')
 print('Training history has been saved to loss.png')
 
 ################################### Test  ##################################################
+
+print('\033[1;34mStarting Test Process \033[0m')
 # Load the unet model at its prime (when it performed the best on the validation set).
 state_dict = torch.load(os.path.join(model_save_path, 'Basic_Unet_best_model.pth'))
 unet_model.load_state_dict(state_dict)
