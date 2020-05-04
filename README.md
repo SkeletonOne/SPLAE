@@ -2,10 +2,15 @@
  Segement Prostate Like An Expert by Jeffrey Liu.
  Playing with the promise12 dataset.
 
-Dice Score 0.7825447279440513
+# Results
 
-![Loss Graph](losss.png)
-![Segment Result](segres.png)
+All models were trained with BS = 8, Epochs = 60 Lr = 1e-4.
+
+U-Net : Dice Score 0.7825447279440513
+Nested U-Net: Dice Score 0.8150140695594263
+
+![U-Net Loss Graph](losss.png)
+![U-Net Segment Result](segres.png)
 
 # How to use SPLAE?
 
@@ -20,8 +25,10 @@ Note that the original implementation(for brain tumor) made a threshold=0.5 for 
 # Todo List
 - [ ] [Data Augmentation]
 - [ ] [Make a detailed description]
+- [ ] [Support 5-fold validation]
 - [ ] [Support multi-class segmentation]
 - [x] [Support more networks]
+- [ ] [Transform the output to 3D slices for submission]
 
 # Acknowlegement
 This project is mainly based on [Brain Tumor Segmentation](https://github.com/sdsubhajitdas/Brain-Tumor-Segmentation) by Subhajit Das and [Unet-Segmentation-Pytorch-Nest-of-Unets](https://github.com/bigmb/Unet-Segmentation-Pytorch-Nest-of-Unets) by Malav Bateriwala. Appreciate for their great work.
