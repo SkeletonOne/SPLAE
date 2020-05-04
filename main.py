@@ -20,28 +20,25 @@ from loss.dice_loss import DiceLoss
 from tools.visualize_gt import visualize_gt
 
 #################################### Hyper params start ##################################################
-################PATHS##########
+################ DEVICE ##########
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+################ PATHS ###########
 # path for .mhd
 file_path = '/content/dataset'
 # path for .png
 save_path = './imgs/'
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-
-# Batch size for training. Limited by GPU memory
-BATCH_SIZE = 8
-# Training Epochs
-epochs = 60
-learning_rate = 1e-4
 model_save_path = './saved_models/'
+################ DATA ############
 train_num, val_num, test_num = 1250, 127, 127
-loss = 'bce'
+do_normalize = True
+################ MODEL ###########
 models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
 model_used = models[0]
 print_model = True
-do_normalize = True
+BATCH_SIZE = 8
+epochs = 60
+learning_rate = 1e-4
+loss = 'bce'
 #################################### Hyper params end ####################################################
 
 print('\033[1;36mComputation Details: \033[0m')
