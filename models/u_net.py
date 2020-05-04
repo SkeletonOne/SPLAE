@@ -45,7 +45,6 @@ class U_Net(nn.Module):
         self.Up_conv2 = conv_block(ch_in = 2 * first_layer_numKernel, ch_out = first_layer_numKernel)
 
         self.Conv_1x1 = nn.Conv2d(first_layer_numKernel, output_ch, kernel_size = 1, stride = 1, padding = 0)
-        # initialize_module_params(self)
 
     def forward(self, x):
         '''
@@ -83,7 +82,6 @@ class U_Net(nn.Module):
         d4 = self.Up_conv4(d4)
 
         d3 = self.Up3(d4)
-        # d3 = self.Up3(x3)
         d3 = torch.cat((x2, d3), dim = 1)
         d3 = self.Up_conv3(d3)
 

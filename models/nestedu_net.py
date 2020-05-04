@@ -14,7 +14,7 @@ class NestedUNet(nn.Module):
     def __init__(self, in_ch=3, out_ch=1):
         super(NestedUNet, self).__init__()
 
-        n1 = 64
+        n1 = 16
         filters = [n1, n1 * 2, n1 * 4, n1 * 8, n1 * 16]
 
         self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
@@ -64,5 +64,7 @@ class NestedUNet(nn.Module):
         x1_3 = self.conv1_3(torch.cat([x1_0, x1_1, x1_2, self.Up(x2_2)], 1))
         x0_4 = self.conv0_4(torch.cat([x0_0, x0_1, x0_2, x0_3, self.Up(x1_3)], 1))
 
-        output = self.final(x0_4)
+        out = self.final(x0_4)
+        output = torch.sigmoid(out)
+
         return output

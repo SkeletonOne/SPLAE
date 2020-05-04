@@ -12,7 +12,7 @@ class R2U_Net(nn.Module):
     def __init__(self, img_ch=3, output_ch=1, t=2):
         super(R2U_Net, self).__init__()
 
-        n1 = 64
+        n1 = 16
         filters = [n1, n1 * 2, n1 * 4, n1 * 8, n1 * 16]
 
         self.Maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
@@ -45,8 +45,6 @@ class R2U_Net(nn.Module):
         self.Up_RRCNN2 = RRCNN_block(filters[1], filters[0], t=t)
 
         self.Conv = nn.Conv2d(filters[0], output_ch, kernel_size=1, stride=1, padding=0)
-
-       # self.active = torch.nn.Sigmoid()
 
 
     def forward(self, x):
@@ -83,6 +81,6 @@ class R2U_Net(nn.Module):
 
         out = self.Conv(d2)
 
-      # out = self.active(out)
+        output = torch.sigmoid(out)
 
-        return out
+        return output
