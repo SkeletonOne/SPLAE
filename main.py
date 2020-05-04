@@ -93,7 +93,6 @@ os.makedirs(model_save_path, exist_ok = True)
 unet_model = model_used.to(device)
 
 if print_model:
-    print('\033[1;35mCurrent Model Used: \033[0m', model_used)
     print(unet_model)
 
 # Training session history data.
