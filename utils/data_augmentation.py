@@ -13,7 +13,7 @@ def smooth_image(img, t_step=0.125, n_iter=5):
 
     return img
 
-def Normailize_images(images):
+def Normalize_images(images):
     images = np.concatenate(images , axis=0).reshape(-1, 512, 512)
     mu = np.mean(images)
     sigma = np.std(images)
