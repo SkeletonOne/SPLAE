@@ -12,13 +12,12 @@ def loadImages(filename, plugin='simpleitk'):
         imagesArray.append(np.array(cv2.resize(images[i],(512,512), interpolation=cv2.INTER_AREA),dtype='int16'))
     return imagesArray
 
-def generate_2D_imgs(file_path, save_path):
+def generate_2D_imgs(file_path, save_path, do_normalize = True):
     cases = []
     masks = []
     count = 0
     xTrain=[]
     xVal=[]
-    do_normalize = True
     
     # Make four lists: cases_train, masks_train, cases_val, masks_val. Containing the .mhd files.
     for dirName, subdirList, fileList in os.walk(file_path):

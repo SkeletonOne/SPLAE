@@ -20,6 +20,7 @@ from loss.dice_loss import DiceLoss
 from tools.visualize_gt import visualize_gt
 
 #################################### Hyper params start ##################################################
+################PATHS##########
 # path for .mhd
 file_path = '/content/dataset'
 # path for .png
@@ -27,16 +28,7 @@ save_path = './imgs/'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-print('\033[1;36mComputation Details: \033[0m')
-if device == torch.device('cpu'):
-    print('No GPU available. Using CPU')
-else:
-    print(f'\tDevice Used: ({device})  {torch.cuda.get_device_name(torch.cuda.current_device())}\n')
 
-print('\033[1;36mPackages Used Versions: \033[0m')
-print(f'\tPytorch Version: {torch.__version__}')
-# Dataset folder used
-DATASET_PATH = os.path.join('./imgs/')
 
 # Batch size for training. Limited by GPU memory
 BATCH_SIZE = 8
@@ -49,16 +41,28 @@ loss = 'bce'
 models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
 model_used = models[0]
 print_model = True
+do_normalize = True
 #################################### Hyper params end ####################################################
+
+print('\033[1;36mComputation Details: \033[0m')
+if device == torch.device('cpu'):
+    print('No GPU available. Using CPU')
+else:
+    print(f'\tDevice Used: ({device})  {torch.cuda.get_device_name(torch.cuda.current_device())}\n')
+
+print('\033[1;36mPackages Used Versions: \033[0m')
+print(f'\tPytorch Version: {torch.__version__}')
 
 if not os.path.isdir(save_path):
     os.makedirs(save_path)
     print('\033[1;35mGenerating .png imgs from .mhd files. \033[0m')
-    generate_2D_imgs(file_path, save_path)
+    generate_2D_imgs(file_path, save_path, do_normalize)
     print('\033[1;35mGenerate finished. \033[0m')
 else:
     print('Training images already exist. No need to generate them again.')
 
+# Dataset folder used
+DATASET_PATH = os.path.join(save_path)
 tumor_dataset = TumorDataset(DATASET_PATH)
 train_indices, validation_indices, test_indices = get_indices(train_num, val_num, test_num)
 train_sampler, validation_sampler, test_sampler = SubsetRandomSampler(train_indices), SubsetRandomSampler(validation_indices), SubsetRandomSampler(test_indices)
