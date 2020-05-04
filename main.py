@@ -48,6 +48,7 @@ train_num, val_num, test_num = 1250, 127, 127
 loss = 'bce'
 models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
 model_used = models[0]
+print_model = True
 #################################### Hyper params end ####################################################
 
 if not os.path.isdir(save_path):
@@ -91,8 +92,8 @@ os.makedirs(model_save_path, exist_ok = True)
 # New model is created.
 unet_model = model_used.to(device)
 
-#### You can uncomment this to see the textual architecture of our U-Net.
-#print(unet_model)
+if print_model:
+    print(unet_model)
 
 # Training session history data.
 history = {'train_loss': list(), 'validation_loss': list()}

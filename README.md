@@ -7,6 +7,16 @@ Dice Score 0.7825447279440513
 ![Loss Graph](losss.png)
 ![Segment Result](segres.png)
 
+# How to use SPLAE?
+
+Place the data in the `file_path` folder, then run
+```bash
+python main.py
+```
+Easy enough!
+
+Note that the original implementation(for brain tumor) made a threshold=0.5 for val/test, so the val score does not change initially(because the output are totally 0 after the threshold...). But after a few epochs it will become normal.
+
 # Todo List
 - [ ] [Data Augmentation]
 - [ ] [Make a detailed description]
