@@ -4,6 +4,8 @@ import cv2
 import SimpleITK as sitk
 import skimage.io as io
 
+from utils.data_augmentation import smooth_images
+
 def loadImages(filename, plugin='simpleitk'):
     imagesArray=[];
     images=io.imread(filename,plugin=plugin)   
@@ -12,7 +14,10 @@ def loadImages(filename, plugin='simpleitk'):
         imagesArray.append(np.array(cv2.resize(images[i],(512,512), interpolation=cv2.INTER_AREA),dtype='int16'))
     return imagesArray
 
-def generate_2D_imgs(file_path, save_path, do_normalize = True):
+def generate_2D_imgs(file_path, 
+                     save_path, 
+                     do_smooth = False,
+                     do_normalize = False):
     cases = []
     masks = []
     count = 0
@@ -46,6 +51,8 @@ def generate_2D_imgs(file_path, save_path, do_normalize = True):
             gt = gt.astype(np.uint8)
             cv2.imwrite('./imgs/'+str(count)+'_mask.png',gt)
             count += 1
+    if do_smooth:
+        xTrain=smooth_images(np.array(xTrain))
     if do_normalize:
         xTrainMean=np.array(xTrain).mean()
         xTrainStd=np.array(xTrain).std()
@@ -67,6 +74,8 @@ def generate_2D_imgs(file_path, save_path, do_normalize = True):
             gt = gt.astype(np.uint8)
             cv2.imwrite('./imgs/'+str(count)+'_mask.png',gt)
             count += 1
+    if do_smooth:
+        xVal=smooth_images(np.array(xVal))
     if do_normalize:
         xVal=(np.array(xVal)-xTrainMean)/xTrainStd
     # Save val imgs
