@@ -10,6 +10,7 @@ Dice Score 0.7825447279440513
 # Todo List
 - [ ] [Data Augmentation]
 - [ ] [Make a detailed description]
+- [ ] [Support multi-class segmentation]
 - [x] [Support more networks]
 
 # Acknowlegement
