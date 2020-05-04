@@ -9,7 +9,7 @@ class R2AttU_Net(nn.Module):
     Residual Recuurent Block with attention Unet
     Implementation : https://github.com/LeeJunHyun/Image_Segmentation
     """
-    def __init__(self, in_ch=3, out_ch=1, t=2):
+    def __init__(self, in_ch=1, out_ch=1, t=2):
         super(R2AttU_Net, self).__init__()
 
         n1 = 16

@@ -9,7 +9,7 @@ class AttU_Net(nn.Module):
     Attention Unet implementation
     Paper: https://arxiv.org/abs/1804.03999
     """
-    def __init__(self, img_ch=3, output_ch=1):
+    def __init__(self, img_ch=1, output_ch=1):
         super(AttU_Net, self).__init__()
 
         n1 = 16

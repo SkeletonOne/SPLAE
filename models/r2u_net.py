@@ -9,7 +9,7 @@ class R2U_Net(nn.Module):
     R2U-Unet implementation
     Paper: https://arxiv.org/abs/1802.06955
     """
-    def __init__(self, img_ch=3, output_ch=1, t=2):
+    def __init__(self, img_ch=1, output_ch=1, t=2):
         super(R2U_Net, self).__init__()
 
         n1 = 16

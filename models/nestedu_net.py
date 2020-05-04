@@ -11,7 +11,7 @@ class NestedUNet(nn.Module):
     Implementation of this paper:
     https://arxiv.org/pdf/1807.10165.pdf
     """
-    def __init__(self, in_ch=3, out_ch=1):
+    def __init__(self, in_ch=1, out_ch=1):
         super(NestedUNet, self).__init__()
 
         n1 = 16
