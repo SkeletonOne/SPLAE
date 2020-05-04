@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import SimpleITK as sitk
 
-from utils.data_augmentation import Normalize_images
+from data_augmentation import Normalize_images
 
 def generate_2D_imgs(file_path, save_path):
     cases = []
