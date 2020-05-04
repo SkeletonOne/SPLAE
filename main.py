@@ -8,7 +8,11 @@ import torch.optim as optim
 from torch.utils.data import SubsetRandomSampler
 
 from data_processing import TumorDataset, get_indices
-from model import U_Net
+from models.u_net import U_Net
+from models.r2u_net import R2U_Net
+from models.attu_net import AttU_Net
+from models.r2attu_net import R2AttU_Net
+from models.nestedu_net import NestedUNet
 from utils.generate_2D_imgs import generate_2D_imgs
 from utils.dice_coefficient import dice_coefficient
 from utils.visualize_result import visualize_result
@@ -42,7 +46,8 @@ learning_rate = 1e-4
 model_save_path = './saved_models/'
 train_num, val_num, test_num = 1250, 127, 127
 loss = 'bce'
-
+models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
+model_used = models[0]
 #################################### Hyper params end ####################################################
 
 if not os.path.isdir(save_path):
@@ -84,7 +89,7 @@ mini_batch = 100
 os.makedirs(model_save_path, exist_ok = True)
 
 # New model is created.
-unet_model = U_Net().to(device)
+unet_model = model_used.to(device)
 
 #### You can uncomment this to see the textual architecture of our U-Net.
 #print(unet_model)
