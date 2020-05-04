@@ -30,9 +30,9 @@ def generate_2D_imgs(file_path, save_path):
         for img_num in range(case.shape[0]):
             img = case[img_num]
             gt = case_mask[img_num]
-            img = np.array(cv2.resize(img,(320,320), interpolation=cv2.INTER_AREA),dtype='int16')
+            img = np.array(cv2.resize(img,(512,512), interpolation=cv2.INTER_AREA),dtype='int16')
             cv2.imwrite('./imgs/'+str(count)+'.png',img)
-            gt = np.array(cv2.resize(gt,(320,320), interpolation=cv2.INTER_NEAREST),'int8')
+            gt = np.array(cv2.resize(gt,(512,512), interpolation=cv2.INTER_NEAREST),'int8')
             gt *= 255
             gt = gt.astype(np.uint8)
             cv2.imwrite('./imgs/'+str(count)+'_mask.png',gt)
@@ -47,9 +47,9 @@ def generate_2D_imgs(file_path, save_path):
         for img_num in range(case.shape[0]):
             img = case[img_num]
             gt = case_mask[img_num]
-            img = np.array(cv2.resize(img,(320,320), interpolation=cv2.INTER_AREA),dtype='int16')
+            img = np.array(cv2.resize(img,(512,512), interpolation=cv2.INTER_AREA),dtype='int16')
             cv2.imwrite('./imgs/'+str(count)+'.png',img)
-            gt = np.array(cv2.resize(gt,(320,320), interpolation=cv2.INTER_NEAREST),'int8')
+            gt = np.array(cv2.resize(gt,(512,512), interpolation=cv2.INTER_NEAREST),'int8')
             gt *= 255
             gt = gt.astype(np.uint8)
             cv2.imwrite('./imgs/'+str(count)+'_mask.png',gt)
