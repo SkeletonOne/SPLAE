@@ -78,7 +78,7 @@ if loss == 'bce':
     criterion = nn.BCELoss()
 elif loss == 'dice':
     classes = np.array([1.])
-    criterion_dice = DiceLoss(weight = classes)
+    criterion = DiceLoss(weight = classes)
 else:
     raise NotImplementedError("The loss is not implemented: %s"(loss))
 
