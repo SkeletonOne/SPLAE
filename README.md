@@ -9,8 +9,8 @@ Dice Score 0.7825447279440513
 
 # Todo List
 - [ ] [Data Augmentation]
-- [ ] [Support more networks]
 - [ ] [Make a detailed description]
+- [x] [Support more networks]
 
 # Acknowlegement
-This project is mainly based on [Brain Tumor Segmentation](https://github.com/sdsubhajitdas/Brain-Tumor-Segmentation) by Subhajit Das. Appreciate for his great work.
+This project is mainly based on [Brain Tumor Segmentation](https://github.com/sdsubhajitdas/Brain-Tumor-Segmentation) by Subhajit Das and [Unet-Segmentation-Pytorch-Nest-of-Unets](https://github.com/bigmb/Unet-Segmentation-Pytorch-Nest-of-Unets) by Malav Bateriwala. Appreciate for their great work.
