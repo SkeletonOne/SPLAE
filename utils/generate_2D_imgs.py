@@ -4,7 +4,7 @@ import cv2
 import SimpleITK as sitk
 import skimage.io as io
 
-from utils.data_augmentation import smooth_images
+from utils.data_augmentation import smooth_images, hist_equal
 
 def loadImages(filename, plugin='simpleitk'):
     imagesArray=[];
@@ -17,6 +17,7 @@ def loadImages(filename, plugin='simpleitk'):
 def generate_2D_imgs(file_path, 
                      save_path, 
                      do_smooth = False,
+                     do_hist_equalize = False,
                      do_normalize = False):
     cases = []
     masks = []
@@ -53,6 +54,8 @@ def generate_2D_imgs(file_path,
             count += 1
     if do_smooth:
         xTrain=smooth_images(np.array(xTrain))
+    if do_hist_equalize:
+        xTrain=hist_equal(np.array(xTrain))
     if do_normalize:
         xTrainMean=np.array(xTrain).mean()
         xTrainStd=np.array(xTrain).std()
@@ -77,6 +80,8 @@ def generate_2D_imgs(file_path,
             count += 1
     if do_smooth:
         xVal=smooth_images(np.array(xVal))
+    if do_hist_equalize:
+        xVal=hist_equal(np.array(xVal))
     if do_normalize:
         xVal=(np.array(xVal)-xTrainMean)/xTrainStd
         xVal*=256

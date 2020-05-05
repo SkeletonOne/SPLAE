@@ -31,6 +31,7 @@ model_save_path = './saved_models/'
 ################ DATA ############
 train_num, val_num, test_num = 1250, 127, 127
 do_smooth = False
+do_hist_equalize = False
 do_normalize = False
 ################ MODEL ###########
 models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
@@ -44,7 +45,7 @@ loss = 'bce'
 
 print('\033[1;36mComputation Details: \033[0m')
 if device == torch.device('cpu'):
-    print('No GPU available. Using CPU')
+    print(f'\tNo GPU available. Using CPU.')
 else:
     print(f'\tDevice Used: ({device})  {torch.cuda.get_device_name(torch.cuda.current_device())}\n')
 
@@ -54,7 +55,7 @@ print(f'\tPytorch Version: {torch.__version__}')
 if not os.path.isdir(save_path):
     os.makedirs(save_path)
     print('\033[1;35mGenerating .png imgs from .mhd files. \033[0m')
-    generate_2D_imgs(file_path, save_path, do_smooth, do_normalize)
+    generate_2D_imgs(file_path, save_path, do_smooth, do_hist_equalize, do_normalize)
     print('\033[1;35mGenerate finished. \033[0m')
 else:
     print('Training images already exist. No need to generate them again.')
