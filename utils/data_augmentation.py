@@ -28,9 +28,7 @@ def hist_equal(imgs):
         imgs: a numpy array with (N, w, h), which is the hist-equalized input image.
     '''
     for mm in range(len(imgs)):
-        img = sitk.GetImageFromArray(imgs[mm])
-        img = exposure.equalize_hist(img)
-        imgs[mm] = sitk.GetArrayFromImage(img)
+        imgs[mm] = exposure.equalize_hist(imgs[mm])*256
     return imgs
 
 def randomflipping(imgs):
