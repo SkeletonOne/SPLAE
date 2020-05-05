@@ -20,11 +20,13 @@ python main.py
 ```
 Easy enough!
 
+The hyperparameters are in `main.py`. Change them to whatever you want.
+
 Note that the original implementation(for brain tumor) made a threshold=0.5 for val/test, so the val score does not change initially(because the output are totally 0 after the threshold...). But after a few epochs it will become normal.
 
 # Todo List
-- [ ] [Data Augmentation]
-- [ ] [Make a detailed description]
+- [x] [Data Augmentation]
+- [x] [Make an instruction]
 - [ ] [Support 5-fold validation]
 - [ ] [Support multi-class segmentation]
 - [x] [Support more networks]
