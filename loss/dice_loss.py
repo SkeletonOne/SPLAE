@@ -76,7 +76,7 @@ class CosDiceLoss(nn.Module):
         Loss tensor according to arg reduction
     """
     def __init__(self, q=2):
-        super(BinaryDiceLoss, self).__init__()
+        super(CosDiceLoss, self).__init__()
         self.q = q
     def forward(self, predict, target):
         binarydiceloss = BinaryDiceLoss()
