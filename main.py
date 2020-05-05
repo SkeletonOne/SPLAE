@@ -29,7 +29,7 @@ file_path = '/content/dataset'
 save_path = './imgs/'
 model_save_path = './saved_models/'
 ################ DATA ############
-train_num, val_num, test_num = 1250, 127, 127
+train_num, val_num, test_num = 2500, 127, 127
 do_smooth = False
 do_hist_equalize = False
 do_normalize = False

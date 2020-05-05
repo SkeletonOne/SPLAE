@@ -78,7 +78,7 @@ class TumorDataset(Dataset):
         # Return how many image-mask pairs we have.
         return total_files // 2
 
-# Total 1377 imgs. 1250 Train, 127 val/test. The 127 belongs to Case 05,15,25,35,45.
+# Total 1377 imgs. 1250+1250(rot) Train, 127 val/test. The 127 belongs to Case 05,15,25,35,45.
 def get_indices(ltrain, lval, ltest):
     '''
     Gets the Training & Testing data indices for the dataset.
