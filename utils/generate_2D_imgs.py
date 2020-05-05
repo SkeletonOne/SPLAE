@@ -19,6 +19,7 @@ def loadImages(filename, plugin='simpleitk'):
 
 def generate_2D_imgs(file_path, 
                      save_path, 
+                     train_num, # this is used to name the val imgs to 'current+train_num.png'
                      do_smooth = False,
                      do_hist_equalize = False,
                      do_normalize = False,
@@ -96,7 +97,7 @@ def generate_2D_imgs(file_path,
         xVal*=256
     # Save val imgs
     for img_num, img in enumerate(xVal):
-        cv2.imwrite('./imgs/'+str(img_num + 1250)+'.png',img)
+        cv2.imwrite('./imgs/'+str(img_num + train_num)+'.png',img)
     print('total nums',count)
 
     return None

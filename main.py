@@ -56,7 +56,7 @@ print(f'\tPytorch Version: {torch.__version__}')
 if not os.path.isdir(save_path):
     os.makedirs(save_path)
     print('\033[1;35mGenerating .png imgs from .mhd files. \033[0m')
-    generate_2D_imgs(file_path, save_path, do_smooth, do_hist_equalize, do_normalize, do_data_augmentation)
+    generate_2D_imgs(file_path, save_path, train_num, do_smooth, do_hist_equalize, do_normalize, do_data_augmentation)
     print('\033[1;35mGenerate finished. \033[0m')
 else:
     print('Training images already exist. No need to generate them again.')
