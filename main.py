@@ -16,7 +16,7 @@ from models.nestedu_net import NestedUNet
 from utils.generate_2D_imgs import generate_2D_imgs
 from utils.dice_coefficient import dice_coefficient
 from utils.visualize_result import visualize_result
-from loss.dice_loss import DiceLoss
+from loss.dice_loss import BinaryDiceLoss, CosDiceLoss, DiceLoss
 from tools.visualize_gt import visualize_gt
 
 #################################### Hyper params start ##################################################
@@ -81,8 +81,9 @@ unet_classifier = None
 if loss == 'bce':
     criterion = nn.BCELoss()
 elif loss == 'dice':
-    classes = np.array([1.])
-    criterion = DiceLoss(weight = classes)
+    criterion = BinaryDiceLoss()
+elif loss == 'cosdice':
+    criterion = CosDiceLoss()
 else:
     raise NotImplementedError("The loss is not implemented: %s"(loss))
 

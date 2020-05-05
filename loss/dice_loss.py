@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-
+import math
 
 def make_one_hot(input, num_classes, device):
     """Convert class index tensor to one hot encoding tensor.
@@ -68,6 +68,21 @@ class BinaryDiceLoss(nn.Module):
         else:
             raise Exception('Unexpected reduction {}'.format(self.reduction))
 
+class CosDiceLoss(nn.Module):
+    """Cos Dice Loss
+    Args:
+        q: The times of the cos calculation. default: 2
+    Returns:
+        Loss tensor according to arg reduction
+    """
+    def __init__(self, q=2):
+        super(BinaryDiceLoss, self).__init__()
+        self.q = q
+    def forward(self, predict, target):
+        binarydiceloss = BinaryDiceLoss()
+        dice_loss = binarydiceloss(predict, target)
+        cos_dice = (torch.cos(0.5 * math.pi * dice_loss)) ** self.q
+        return cos_dice
 
 class DiceLoss(nn.Module):
     """Dice loss, need one hot encode input
