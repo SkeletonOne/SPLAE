@@ -57,6 +57,7 @@ def generate_2D_imgs(file_path,
         xTrainMean=np.array(xTrain).mean()
         xTrainStd=np.array(xTrain).std()
         xTrain=(np.array(xTrain)-xTrainMean)/xTrainStd
+        xTrain*=256
     # Save train imgs
     for img_num, img in enumerate(xTrain):
         cv2.imwrite('./imgs/'+str(img_num)+'.png',img)
@@ -78,6 +79,7 @@ def generate_2D_imgs(file_path,
         xVal=smooth_images(np.array(xVal))
     if do_normalize:
         xVal=(np.array(xVal)-xTrainMean)/xTrainStd
+        xVal*=256
     # Save val imgs
     for img_num, img in enumerate(xVal):
         cv2.imwrite('./imgs/'+str(img_num + 1250)+'.png',img)

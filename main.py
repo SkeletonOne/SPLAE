@@ -30,8 +30,8 @@ save_path = './imgs/'
 model_save_path = './saved_models/'
 ################ DATA ############
 train_num, val_num, test_num = 1250, 127, 127
-do_smooth = True
-do_normalize = True
+do_smooth = False
+do_normalize = False
 ################ MODEL ###########
 models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
 model_used = models[0]
