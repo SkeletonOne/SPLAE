@@ -4,7 +4,10 @@ import cv2
 import SimpleITK as sitk
 import skimage.io as io
 
-from utils.data_augmentation import smooth_images, hist_equal
+from utils.data_preprocessing import smooth_images, hist_equal
+from utils.augmenters import select_data_for_augmentation, rotate
+
+# Generate 2D images here, which is the first process of make our dataset. Called in main.py.
 
 def loadImages(filename, plugin='simpleitk'):
     imagesArray=[];
@@ -18,7 +21,8 @@ def generate_2D_imgs(file_path,
                      save_path, 
                      do_smooth = False,
                      do_hist_equalize = False,
-                     do_normalize = False):
+                     do_normalize = False,
+                     do_data_augmentation = False):
     cases = []
     masks = []
     count = 0
@@ -66,6 +70,11 @@ def generate_2D_imgs(file_path,
         cv2.imwrite('./imgs/'+str(img_num)+'.png',img)
     print('train nums',count)
     
+    # Do train set augmentation here, for generating more training imgs.
+    if do_data_augmentation:
+        count = select_data_for_augmentation('./imgs/', count)
+    print('after data augmentation, we have: ',count, 'images for training.')
+
     # Make val imgs and gts
     for case_num in range(len(cases_val)):
         xVal.extend(loadImages(dirName+'/'+cases_val[case_num]))

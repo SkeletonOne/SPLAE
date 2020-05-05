@@ -3,6 +3,8 @@ import SimpleITK as sitk
 import torch
 from skimage import exposure
 
+# Define some preprocessing metrics when generating data, called in generate_2D_imgs.py
+
 def smooth_images(imgs, t_step=0.125, n_iter=5):
     """
     Curvature driven image denoising.
@@ -30,9 +32,3 @@ def hist_equal(imgs):
     for mm in range(len(imgs)):
         imgs[mm] = exposure.equalize_hist(imgs[mm])*256
     return imgs
-
-def randomflipping(imgs):
-    pass
-
-def rotation(imgs):
-    pass
