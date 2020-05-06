@@ -6,12 +6,14 @@
 
 All models were trained with BS = 8, Epochs = 60 Lr = 1e-4.
 
-Model | Aug | Dice Score 
---- |:---:|:---:
-U-Net | Rot | 0.7649910148678267
+Model | Aug | Dice Score | Loss
+--- |:---:|:---:|:---:
+U-Net | Rot | 0.7649910148678267 | BCE
+U-Net | Rot+HFlip+VFlip | 0.7820317164718084 | BCE
 
 ![U-Net Loss Graph](README_IMGS/TrainValLoss.png)
 ![U-Net Segment Result](README_IMGS/Predictions.png)
+![U-Net Segment Result2](README_IMGS/Predictions6.png)
 
 # How to use SPLAE?
 

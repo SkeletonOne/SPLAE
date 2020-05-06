@@ -9,9 +9,9 @@ class U_Net(nn.Module):
     This is the Pytorch version of U-Net Architecture.
 
     The input and output of this network is of the same shape.
-    Input Size of Network - (1,512,512). 
+    Input Size of Network - (1,input_length,input_length). 
         Note that the input size here is just for our dataset in this notebook, but if you use this network for other projects, any input size that is a multiple of 2 ** 5 will work.
-    Output Size of Network - (1,512,512)
+    Output Size of Network - (1,input_length,input_length)
         Shape Format :  (Channel, Width, Height)
     '''
     def __init__(self, img_ch = 1, output_ch = 1, first_layer_numKernel = 16):
@@ -50,7 +50,7 @@ class U_Net(nn.Module):
         '''
         Method for forward propagation in the network.
         Parameters:
-            x(torch.Tensor): Input for the network of size (1, 512, 512).
+            x(torch.Tensor): Input for the network of size (1, input_length, input_length).
 
         Returns:
             output(torch.Tensor): Output after the forward propagation 

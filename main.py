@@ -38,6 +38,7 @@ do_data_augmentation = False
 models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
 model_used = models[0]
 print_model = True
+input_length = 512
 BATCH_SIZE = 8
 epochs = 60
 learning_rate = 1e-4
@@ -56,7 +57,7 @@ print(f'\tPytorch Version: {torch.__version__}')
 if not os.path.isdir(save_path):
     os.makedirs(save_path)
     print('\033[1;35mGenerating .png imgs from .mhd files. \033[0m')
-    generate_2D_imgs(file_path, save_path, train_num, do_smooth, do_hist_equalize, do_normalize, do_data_augmentation)
+    generate_2D_imgs(file_path, save_path, input_length, train_num, do_smooth, do_hist_equalize, do_normalize, do_data_augmentation)
     print('\033[1;35mGenerate finished. \033[0m')
 else:
     print('Training images already exist. No need to generate them again.')
@@ -187,8 +188,8 @@ for epoch in range(epochs):
         mask_prediction = mask_prediction.cpu().numpy()
         mask = mask.cpu().numpy()
 
-        mask = np.resize(mask, (1, 512, 512))
-        mask_prediction = np.resize(mask_prediction, (1, 512, 512))
+        mask = np.resize(mask, (1, input_length, input_length))
+        mask_prediction = np.resize(mask_prediction, (1, input_length, input_length))
         # Calculate the dice score for original and predicted image mask.
         validation_score += dice_coefficient(mask_prediction, mask)
 
@@ -269,8 +270,8 @@ for batch, data in enumerate(testloader):
     mask_prediction = (mask_prediction > 0.5)
     mask_prediction = mask_prediction.numpy()
 
-    mask = np.resize(mask, (1, 512, 512))
-    mask_prediction = np.resize(mask_prediction, (1, 512, 512))
+    mask = np.resize(mask, (1, input_length, input_length))
+    mask_prediction = np.resize(mask_prediction, (1, input_length, input_length))
 
     # Calculating the dice score for original and predicted mask.
     mean_test_score += dice_coefficient(mask_prediction, mask)
@@ -293,17 +294,17 @@ for example_index in range(10):
     mask = sample['mask'].numpy()
 
     image_tensor = torch.Tensor(image)
-    image_tensor = image_tensor.view((-1, 1, 512, 512)).to(device)
+    image_tensor = image_tensor.view((-1, 1, input_length, input_length)).to(device)
     output = unet_model(image_tensor).detach().cpu()
     output = (output > threshold)
     output = output.numpy()
 
-    # image(numpy.ndarray): 512x512 Original brain scanned image.
-    image = np.resize(image, (512, 512))
-    # mask(numpy.ndarray): 512x512 Original mask of scanned image.
-    mask = np.resize(mask, (512, 512))
-    # output(numpy.ndarray): 512x512 Generated mask of scanned image.
-    output = np.resize(output, (512, 512))
+    # image(numpy.ndarray): input_length*input_length Original brain scanned image.
+    image = np.resize(image, (input_length, input_length))
+    # mask(numpy.ndarray): input_length*input_length Original mask of scanned image.
+    mask = np.resize(mask, (input_length, input_length))
+    # output(numpy.ndarray): input_length*input_length Generated mask of scanned image.
+    output = np.resize(output, (input_length, input_length))
     # score(float): Sørensen–Dice Coefficient for mask and output. Calculates how similar are the two images.
     d_score = dice_coefficient(output, mask)
 

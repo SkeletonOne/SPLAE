@@ -24,10 +24,10 @@ class TumorDataset(Dataset):
         '''
         self.root_dir = root_dir
         # The default transformation is composed of 
-        # 1) a grayscale conversion and 2) a resizing to 512 x 512.
+        # 1) a grayscale conversion and 2) a resizing to input_length x input_length.
         self.default_transformation = transforms.Compose([
             # transforms.Grayscale(),
-            # transforms.Resize((512, 512))
+            # transforms.Resize((input_length, input_length))
         ])
         self.DEBUG = DEBUG
 

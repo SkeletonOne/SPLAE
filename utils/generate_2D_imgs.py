@@ -9,16 +9,17 @@ from utils.augmenters import select_data_for_augmentation
 
 # Generate 2D images here, which is the first process of make our dataset. Called in main.py.
 
-def loadImages(filename, plugin='simpleitk'):
+def loadImages(filename, input_length, plugin='simpleitk'):
     imagesArray=[];
     images=io.imread(filename,plugin=plugin)   
     #Resizing and stacking the slices
     for i in range(images.shape[0]):
-        imagesArray.append(np.array(cv2.resize(images[i],(512,512), interpolation=cv2.INTER_AREA),dtype='int16'))
+        imagesArray.append(np.array(cv2.resize(images[i],(input_length,input_length), interpolation=cv2.INTER_AREA),dtype='int16'))
     return imagesArray
 
 def generate_2D_imgs(file_path, 
                      save_path, 
+                     input_length, # The side length of the image.
                      train_num, # this is used to name the val imgs to 'current+train_num.png'
                      do_smooth = False,
                      do_hist_equalize = False,
@@ -47,12 +48,12 @@ def generate_2D_imgs(file_path,
 
     # Make train imgs and gts
     for case_num in range(len(cases_train)):
-        xTrain.extend(loadImages(dirName+'/'+cases_train[case_num]))
+        xTrain.extend(loadImages(dirName+'/'+cases_train[case_num], input_length))
         case_mask = sitk.ReadImage(dirName+'/'+masks_train[case_num])
         case_mask = sitk.GetArrayFromImage(case_mask)
         for img_num in range(case_mask.shape[0]):
             gt = case_mask[img_num]
-            gt = np.array(cv2.resize(gt,(512,512), interpolation=cv2.INTER_NEAREST),'int8')
+            gt = np.array(cv2.resize(gt,(input_length,input_length), interpolation=cv2.INTER_NEAREST),'int8')
             gt *= 255
             gt = gt.astype(np.uint8)
             cv2.imwrite('./imgs/'+str(count)+'_mask.png',gt)
@@ -78,12 +79,12 @@ def generate_2D_imgs(file_path,
 
     # Make val imgs and gts
     for case_num in range(len(cases_val)):
-        xVal.extend(loadImages(dirName+'/'+cases_val[case_num]))
+        xVal.extend(loadImages(dirName+'/'+cases_val[case_num], input_length))
         case_mask = sitk.ReadImage(dirName+'/'+masks_val[case_num])
         case_mask = sitk.GetArrayFromImage(case_mask)
         for img_num in range(case_mask.shape[0]):
             gt = case_mask[img_num]
-            gt = np.array(cv2.resize(gt,(512,512), interpolation=cv2.INTER_NEAREST),'int8')
+            gt = np.array(cv2.resize(gt,(input_length,input_length), interpolation=cv2.INTER_NEAREST),'int8')
             gt *= 255
             gt = gt.astype(np.uint8)
             cv2.imwrite('./imgs/'+str(count)+'_mask.png',gt)
