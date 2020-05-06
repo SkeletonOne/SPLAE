@@ -6,11 +6,12 @@
 
 All models were trained with BS = 8, Epochs = 60 Lr = 1e-4.
 
-U-Net : Dice Score 0.7825447279440513
-Nested U-Net: Dice Score 0.8150140695594263
+Model | Aug | Dice Score 
+--- |:---:|:---:
+U-Net | Rot | 0.7649910148678267
 
-![U-Net Loss Graph](losss.png)
-![U-Net Segment Result](segres.png)
+![U-Net Loss Graph](README_IMGS/TrainValLoss.png)
+![U-Net Segment Result](README_IMGS/Predictions.png)
 
 # How to use SPLAE?
 
