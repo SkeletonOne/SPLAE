@@ -10,7 +10,7 @@ Model | Aug | Dice Score | Loss
 --- |:---:|:---:|:---:
 U-Net_512 | Rot | 0.7649910148678267 | BCE
 U-Net_512 | Rot+HFlip+VFlip | 0.7820317164718084 | BCE
-U-Net_256 | Rot+HFlip+VFlip | 0.8338323765731209 | BCE
+[U-Net_256](logs/unet_256.txt) | Rot+HFlip+VFlip | 0.8338323765731209 | BCE
 
 ![U-Net Loss Graph](README_IMGS/TrainValLoss.png)
 ![U-Net Segment Result](README_IMGS/Predictions.png)

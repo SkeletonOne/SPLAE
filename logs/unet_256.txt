@@ -1,0 +1,557 @@
+Computation Details: 
+	Device Used: (cuda)  Tesla T4
+
+Packages Used Versions: 
+	Pytorch Version: 1.5.0+cu101
+Training images already exist. No need to generate them again.
+Number of files in the train set: 5000 
+Number of files in the validation set: 127 
+Number of files in the test set: 127
+Visualized data has been saved to Visualized_data.png
+U_Net(
+  (Maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (Conv1): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Conv2): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Conv3): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Conv4): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Conv5): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Up5): up_conv(
+    (up): Sequential(
+      (0): Upsample(scale_factor=2.0, mode=nearest)
+      (1): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): ReLU(inplace=True)
+    )
+  )
+  (Up_conv5): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Up4): up_conv(
+    (up): Sequential(
+      (0): Upsample(scale_factor=2.0, mode=nearest)
+      (1): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): ReLU(inplace=True)
+    )
+  )
+  (Up_conv4): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Up3): up_conv(
+    (up): Sequential(
+      (0): Upsample(scale_factor=2.0, mode=nearest)
+      (1): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): ReLU(inplace=True)
+    )
+  )
+  (Up_conv3): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Up2): up_conv(
+    (up): Sequential(
+      (0): Upsample(scale_factor=2.0, mode=nearest)
+      (1): Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): ReLU(inplace=True)
+    )
+  )
+  (Up_conv2): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): ReLU(inplace=True)
+      (2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): ReLU(inplace=True)
+    )
+  )
+  (Conv_1x1): Conv2d(16, 1, kernel_size=(1, 1), stride=(1, 1))
+)
+Starting Training Process 
+    Batch: 100,	Batch Loss: 0.0483393
+    Batch: 200,	Batch Loss: 0.0127908
+    Batch: 300,	Batch Loss: 0.0100059
+    Batch: 400,	Batch Loss: 0.0091755
+    Batch: 500,	Batch Loss: 0.0077489
+    Batch: 600,	Batch Loss: 0.0065456
+Epoch:   1,  train Loss: 0.01540,  validation Loss: 0.06405,  validation score: 0.36280,  current lr:  0.0001 , Time: 68.15 s	Best model saved at score: 0.36280
+    Batch: 100,	Batch Loss: 0.0059181
+    Batch: 200,	Batch Loss: 0.0057325
+    Batch: 300,	Batch Loss: 0.0058111
+    Batch: 400,	Batch Loss: 0.0058715
+    Batch: 500,	Batch Loss: 0.0055002
+    Batch: 600,	Batch Loss: 0.0051072
+Epoch:   2,  train Loss: 0.00563,  validation Loss: 0.04944,  validation score: 0.36280,  current lr:  0.0001 , Time: 67.47 s
+    Batch: 100,	Batch Loss: 0.0052106
+    Batch: 200,	Batch Loss: 0.0041720
+    Batch: 300,	Batch Loss: 0.0044893
+    Batch: 400,	Batch Loss: 0.0043752
+    Batch: 500,	Batch Loss: 0.0036478
+    Batch: 600,	Batch Loss: 0.0035638
+Epoch:   3,  train Loss: 0.00422,  validation Loss: 0.02994,  validation score: 0.66801,  current lr:  0.0001 , Time: 67.69 s	Best model saved at score: 0.66801
+    Batch: 100,	Batch Loss: 0.0031314
+    Batch: 200,	Batch Loss: 0.0034037
+    Batch: 300,	Batch Loss: 0.0030356
+    Batch: 400,	Batch Loss: 0.0026558
+    Batch: 500,	Batch Loss: 0.0028558
+    Batch: 600,	Batch Loss: 0.0023758
+Epoch:   4,  train Loss: 0.00289,  validation Loss: 0.02796,  validation score: 0.70176,  current lr:  0.0001 , Time: 67.68 s	Best model saved at score: 0.70176
+    Batch: 100,	Batch Loss: 0.0022421
+    Batch: 200,	Batch Loss: 0.0023254
+    Batch: 300,	Batch Loss: 0.0021881
+    Batch: 400,	Batch Loss: 0.0020939
+    Batch: 500,	Batch Loss: 0.0021075
+    Batch: 600,	Batch Loss: 0.0019779
+Epoch:   5,  train Loss: 0.00215,  validation Loss: 0.02185,  validation score: 0.78096,  current lr:  0.0001 , Time: 67.54 s	Best model saved at score: 0.78096
+    Batch: 100,	Batch Loss: 0.0017549
+    Batch: 200,	Batch Loss: 0.0018725
+    Batch: 300,	Batch Loss: 0.0016218
+    Batch: 400,	Batch Loss: 0.0016952
+    Batch: 500,	Batch Loss: 0.0016075
+    Batch: 600,	Batch Loss: 0.0015282
+Epoch:   6,  train Loss: 0.00168,  validation Loss: 0.02066,  validation score: 0.79158,  current lr:  0.0001 , Time: 67.49 s	Best model saved at score: 0.79158
+    Batch: 100,	Batch Loss: 0.0014525
+    Batch: 200,	Batch Loss: 0.0014833
+    Batch: 300,	Batch Loss: 0.0013425
+    Batch: 400,	Batch Loss: 0.0013440
+    Batch: 500,	Batch Loss: 0.0012203
+    Batch: 600,	Batch Loss: 0.0014245
+Epoch:   7,  train Loss: 0.00137,  validation Loss: 0.02223,  validation score: 0.79032,  current lr:  0.0001 , Time: 67.34 s
+    Batch: 100,	Batch Loss: 0.0012862
+    Batch: 200,	Batch Loss: 0.0012520
+    Batch: 300,	Batch Loss: 0.0011096
+    Batch: 400,	Batch Loss: 0.0012699
+    Batch: 500,	Batch Loss: 0.0012720
+    Batch: 600,	Batch Loss: 0.0010980
+Epoch:   8,  train Loss: 0.00122,  validation Loss: 0.02068,  validation score: 0.77954,  current lr:  0.0001 , Time: 67.36 s
+    Batch: 100,	Batch Loss: 0.0010327
+    Batch: 200,	Batch Loss: 0.0010808
+    Batch: 300,	Batch Loss: 0.0010151
+    Batch: 400,	Batch Loss: 0.0010008
+    Batch: 500,	Batch Loss: 0.0010326
+    Batch: 600,	Batch Loss: 0.0009804
+Epoch:   9,  train Loss: 0.00102,  validation Loss: 0.02873,  validation score: 0.80697,  current lr:  0.0001 , Time: 67.34 s	Best model saved at score: 0.80697
+    Batch: 100,	Batch Loss: 0.0010863
+    Batch: 200,	Batch Loss: 0.0009145
+    Batch: 300,	Batch Loss: 0.0009655
+    Batch: 400,	Batch Loss: 0.0008989
+    Batch: 500,	Batch Loss: 0.0009916
+    Batch: 600,	Batch Loss: 0.0009044
+Epoch:  10,  train Loss: 0.00096,  validation Loss: 0.02562,  validation score: 0.82596,  current lr:  0.0001 , Time: 67.13 s	Best model saved at score: 0.82596
+    Batch: 100,	Batch Loss: 0.0008310
+    Batch: 200,	Batch Loss: 0.0008480
+    Batch: 300,	Batch Loss: 0.0008558
+    Batch: 400,	Batch Loss: 0.0008728
+    Batch: 500,	Batch Loss: 0.0009711
+    Batch: 600,	Batch Loss: 0.0008070
+Epoch:  11,  train Loss: 0.00086,  validation Loss: 0.02875,  validation score: 0.80019,  current lr:  0.0001 , Time: 67.46 s
+    Batch: 100,	Batch Loss: 0.0007490
+    Batch: 200,	Batch Loss: 0.0007581
+    Batch: 300,	Batch Loss: 0.0007843
+    Batch: 400,	Batch Loss: 0.0007704
+    Batch: 500,	Batch Loss: 0.0007717
+    Batch: 600,	Batch Loss: 0.0008141
+Epoch:  12,  train Loss: 0.00078,  validation Loss: 0.02714,  validation score: 0.80126,  current lr:  0.0001 , Time: 67.61 s
+    Batch: 100,	Batch Loss: 0.0007591
+    Batch: 200,	Batch Loss: 0.0007225
+    Batch: 300,	Batch Loss: 0.0007130
+    Batch: 400,	Batch Loss: 0.0007979
+    Batch: 500,	Batch Loss: 0.0027232
+    Batch: 600,	Batch Loss: 0.0011266
+Epoch:  13,  train Loss: 0.00114,  validation Loss: 0.02765,  validation score: 0.79017,  current lr:  0.0001 , Time: 67.60 s
+    Batch: 100,	Batch Loss: 0.0008033
+    Batch: 200,	Batch Loss: 0.0007360
+    Batch: 300,	Batch Loss: 0.0006898
+    Batch: 400,	Batch Loss: 0.0006954
+    Batch: 500,	Batch Loss: 0.0007164
+    Batch: 600,	Batch Loss: 0.0006504
+Epoch:  14,  train Loss: 0.00072,  validation Loss: 0.02834,  validation score: 0.79146,  current lr:  0.0001 , Time: 67.51 s
+    Batch: 100,	Batch Loss: 0.0006414
+    Batch: 200,	Batch Loss: 0.0006471
+    Batch: 300,	Batch Loss: 0.0006517
+    Batch: 400,	Batch Loss: 0.0006672
+    Batch: 500,	Batch Loss: 0.0006588
+    Batch: 600,	Batch Loss: 0.0006178
+Epoch:  15,  train Loss: 0.00065,  validation Loss: 0.03145,  validation score: 0.79870,  current lr:  0.0001 , Time: 67.71 s
+    Batch: 100,	Batch Loss: 0.0005719
+    Batch: 200,	Batch Loss: 0.0006123
+    Batch: 300,	Batch Loss: 0.0006269
+    Batch: 400,	Batch Loss: 0.0006504
+    Batch: 500,	Batch Loss: 0.0005712
+    Batch: 600,	Batch Loss: 0.0006236
+Epoch:  16,  train Loss: 0.00062,  validation Loss: 0.02357,  validation score: 0.83383,  current lr:  0.0001 , Time: 67.41 s	Best model saved at score: 0.83383
+    Batch: 100,	Batch Loss: 0.0005960
+    Batch: 200,	Batch Loss: 0.0005825
+    Batch: 300,	Batch Loss: 0.0005653
+    Batch: 400,	Batch Loss: 0.0005785
+    Batch: 500,	Batch Loss: 0.0005804
+    Batch: 600,	Batch Loss: 0.0005614
+Epoch    17: reducing learning rate of group 0 to 8.5000e-05.
+Epoch:  17,  train Loss: 0.00058,  validation Loss: 0.04032,  validation score: 0.77456,  current lr:  8.5e-05 , Time: 67.39 s
+    Batch: 100,	Batch Loss: 0.0005243
+    Batch: 200,	Batch Loss: 0.0005150
+    Batch: 300,	Batch Loss: 0.0005148
+    Batch: 400,	Batch Loss: 0.0005612
+    Batch: 500,	Batch Loss: 0.0005471
+    Batch: 600,	Batch Loss: 0.0005153
+Epoch:  18,  train Loss: 0.00053,  validation Loss: 0.04548,  validation score: 0.78615,  current lr:  8.5e-05 , Time: 67.25 s
+    Batch: 100,	Batch Loss: 0.0005012
+    Batch: 200,	Batch Loss: 0.0004767
+    Batch: 300,	Batch Loss: 0.0004846
+    Batch: 400,	Batch Loss: 0.0005556
+    Batch: 500,	Batch Loss: 0.0005469
+    Batch: 600,	Batch Loss: 0.0005346
+Epoch:  19,  train Loss: 0.00052,  validation Loss: 0.03903,  validation score: 0.79093,  current lr:  8.5e-05 , Time: 67.18 s
+    Batch: 100,	Batch Loss: 0.0004970
+    Batch: 200,	Batch Loss: 0.0004973
+    Batch: 300,	Batch Loss: 0.0004528
+    Batch: 400,	Batch Loss: 0.0005036
+    Batch: 500,	Batch Loss: 0.0004804
+    Batch: 600,	Batch Loss: 0.0004620
+Epoch:  20,  train Loss: 0.00048,  validation Loss: 0.04830,  validation score: 0.79604,  current lr:  8.5e-05 , Time: 67.10 s
+    Batch: 100,	Batch Loss: 0.0004761
+    Batch: 200,	Batch Loss: 0.0004114
+    Batch: 300,	Batch Loss: 0.0004703
+    Batch: 400,	Batch Loss: 0.0004629
+    Batch: 500,	Batch Loss: 0.0004641
+    Batch: 600,	Batch Loss: 0.0004906
+Epoch:  21,  train Loss: 0.00046,  validation Loss: 0.03879,  validation score: 0.78185,  current lr:  8.5e-05 , Time: 67.01 s
+    Batch: 100,	Batch Loss: 0.0005163
+    Batch: 200,	Batch Loss: 0.0004530
+    Batch: 300,	Batch Loss: 0.0004763
+    Batch: 400,	Batch Loss: 0.0004479
+    Batch: 500,	Batch Loss: 0.0004272
+    Batch: 600,	Batch Loss: 0.0004237
+Epoch:  22,  train Loss: 0.00046,  validation Loss: 0.04234,  validation score: 0.79819,  current lr:  8.5e-05 , Time: 67.09 s
+    Batch: 100,	Batch Loss: 0.0004664
+    Batch: 200,	Batch Loss: 0.0004303
+    Batch: 300,	Batch Loss: 0.0004348
+    Batch: 400,	Batch Loss: 0.0003974
+    Batch: 500,	Batch Loss: 0.0004040
+    Batch: 600,	Batch Loss: 0.0004527
+Epoch:  23,  train Loss: 0.00043,  validation Loss: 0.05802,  validation score: 0.78326,  current lr:  8.5e-05 , Time: 67.22 s
+    Batch: 100,	Batch Loss: 0.0003986
+    Batch: 200,	Batch Loss: 0.0004068
+    Batch: 300,	Batch Loss: 0.0003979
+    Batch: 400,	Batch Loss: 0.0006171
+    Batch: 500,	Batch Loss: 0.0004785
+    Batch: 600,	Batch Loss: 0.0004309
+Epoch:  24,  train Loss: 0.00046,  validation Loss: 0.04925,  validation score: 0.79922,  current lr:  8.5e-05 , Time: 67.11 s
+    Batch: 100,	Batch Loss: 0.0004222
+    Batch: 200,	Batch Loss: 0.0004068
+    Batch: 300,	Batch Loss: 0.0003910
+    Batch: 400,	Batch Loss: 0.0003791
+    Batch: 500,	Batch Loss: 0.0003949
+    Batch: 600,	Batch Loss: 0.0003996
+Epoch:  25,  train Loss: 0.00040,  validation Loss: 0.05690,  validation score: 0.78188,  current lr:  8.5e-05 , Time: 67.01 s
+    Batch: 100,	Batch Loss: 0.0003707
+    Batch: 200,	Batch Loss: 0.0003764
+    Batch: 300,	Batch Loss: 0.0003340
+    Batch: 400,	Batch Loss: 0.0003763
+    Batch: 500,	Batch Loss: 0.0003662
+    Batch: 600,	Batch Loss: 0.0003708
+Epoch:  26,  train Loss: 0.00037,  validation Loss: 0.06042,  validation score: 0.79426,  current lr:  8.5e-05 , Time: 66.98 s
+    Batch: 100,	Batch Loss: 0.0003873
+    Batch: 200,	Batch Loss: 0.0003640
+    Batch: 300,	Batch Loss: 0.0003649
+    Batch: 400,	Batch Loss: 0.0003596
+    Batch: 500,	Batch Loss: 0.0003834
+    Batch: 600,	Batch Loss: 0.0003913
+Epoch:  27,  train Loss: 0.00037,  validation Loss: 0.05479,  validation score: 0.79023,  current lr:  8.5e-05 , Time: 67.00 s
+    Batch: 100,	Batch Loss: 0.0003727
+    Batch: 200,	Batch Loss: 0.0003413
+    Batch: 300,	Batch Loss: 0.0003760
+    Batch: 400,	Batch Loss: 0.0003992
+    Batch: 500,	Batch Loss: 0.0003555
+    Batch: 600,	Batch Loss: 0.0004048
+Epoch    28: reducing learning rate of group 0 to 7.2250e-05.
+Epoch:  28,  train Loss: 0.00038,  validation Loss: 0.05090,  validation score: 0.80418,  current lr:  7.225000000000001e-05 , Time: 67.16 s
+    Batch: 100,	Batch Loss: 0.0003558
+    Batch: 200,	Batch Loss: 0.0003572
+    Batch: 300,	Batch Loss: 0.0003511
+    Batch: 400,	Batch Loss: 0.0003366
+    Batch: 500,	Batch Loss: 0.0003383
+    Batch: 600,	Batch Loss: 0.0003166
+Epoch:  29,  train Loss: 0.00034,  validation Loss: 0.06559,  validation score: 0.80122,  current lr:  7.225000000000001e-05 , Time: 67.21 s
+    Batch: 100,	Batch Loss: 0.0003042
+    Batch: 200,	Batch Loss: 0.0003081
+    Batch: 300,	Batch Loss: 0.0003219
+    Batch: 400,	Batch Loss: 0.0003120
+    Batch: 500,	Batch Loss: 0.0003634
+    Batch: 600,	Batch Loss: 0.0003367
+Epoch:  30,  train Loss: 0.00032,  validation Loss: 0.06882,  validation score: 0.78607,  current lr:  7.225000000000001e-05 , Time: 67.25 s
+    Batch: 100,	Batch Loss: 0.0002970
+    Batch: 200,	Batch Loss: 0.0003229
+    Batch: 300,	Batch Loss: 0.0003102
+    Batch: 400,	Batch Loss: 0.0003017
+    Batch: 500,	Batch Loss: 0.0003000
+    Batch: 600,	Batch Loss: 0.0003187
+Epoch:  31,  train Loss: 0.00031,  validation Loss: 0.06776,  validation score: 0.78343,  current lr:  7.225000000000001e-05 , Time: 67.14 s
+    Batch: 100,	Batch Loss: 0.0002936
+    Batch: 200,	Batch Loss: 0.0002836
+    Batch: 300,	Batch Loss: 0.0003356
+    Batch: 400,	Batch Loss: 0.0003054
+    Batch: 500,	Batch Loss: 0.0003114
+    Batch: 600,	Batch Loss: 0.0003055
+Epoch:  32,  train Loss: 0.00031,  validation Loss: 0.06191,  validation score: 0.79189,  current lr:  7.225000000000001e-05 , Time: 67.10 s
+    Batch: 100,	Batch Loss: 0.0003124
+    Batch: 200,	Batch Loss: 0.0003075
+    Batch: 300,	Batch Loss: 0.0003009
+    Batch: 400,	Batch Loss: 0.0003162
+    Batch: 500,	Batch Loss: 0.0002819
+    Batch: 600,	Batch Loss: 0.0003015
+Epoch:  33,  train Loss: 0.00030,  validation Loss: 0.06045,  validation score: 0.78867,  current lr:  7.225000000000001e-05 , Time: 67.02 s
+    Batch: 100,	Batch Loss: 0.0003076
+    Batch: 200,	Batch Loss: 0.0003078
+    Batch: 300,	Batch Loss: 0.0003032
+    Batch: 400,	Batch Loss: 0.0002799
+    Batch: 500,	Batch Loss: 0.0002907
+    Batch: 600,	Batch Loss: 0.0002946
+Epoch:  34,  train Loss: 0.00030,  validation Loss: 0.06900,  validation score: 0.78390,  current lr:  7.225000000000001e-05 , Time: 67.09 s
+    Batch: 100,	Batch Loss: 0.0002857
+    Batch: 200,	Batch Loss: 0.0002910
+    Batch: 300,	Batch Loss: 0.0002883
+    Batch: 400,	Batch Loss: 0.0002853
+    Batch: 500,	Batch Loss: 0.0002919
+    Batch: 600,	Batch Loss: 0.0002912
+Epoch:  35,  train Loss: 0.00029,  validation Loss: 0.07083,  validation score: 0.79175,  current lr:  7.225000000000001e-05 , Time: 66.99 s
+    Batch: 100,	Batch Loss: 0.0002787
+    Batch: 200,	Batch Loss: 0.0004068
+    Batch: 300,	Batch Loss: 0.0003159
+    Batch: 400,	Batch Loss: 0.0002800
+    Batch: 500,	Batch Loss: 0.0002774
+    Batch: 600,	Batch Loss: 0.0002758
+Epoch:  36,  train Loss: 0.00030,  validation Loss: 0.06471,  validation score: 0.79830,  current lr:  7.225000000000001e-05 , Time: 67.12 s
+    Batch: 100,	Batch Loss: 0.0002585
+    Batch: 200,	Batch Loss: 0.0002607
+    Batch: 300,	Batch Loss: 0.0002687
+    Batch: 400,	Batch Loss: 0.0002451
+    Batch: 500,	Batch Loss: 0.0002806
+    Batch: 600,	Batch Loss: 0.0002931
+Epoch:  37,  train Loss: 0.00027,  validation Loss: 0.06586,  validation score: 0.79039,  current lr:  7.225000000000001e-05 , Time: 66.95 s
+    Batch: 100,	Batch Loss: 0.0002616
+    Batch: 200,	Batch Loss: 0.0002715
+    Batch: 300,	Batch Loss: 0.0002583
+    Batch: 400,	Batch Loss: 0.0002685
+    Batch: 500,	Batch Loss: 0.0002578
+    Batch: 600,	Batch Loss: 0.0002753
+Epoch:  38,  train Loss: 0.00027,  validation Loss: 0.06387,  validation score: 0.79726,  current lr:  7.225000000000001e-05 , Time: 67.04 s
+    Batch: 100,	Batch Loss: 0.0002612
+    Batch: 200,	Batch Loss: 0.0002610
+    Batch: 300,	Batch Loss: 0.0002596
+    Batch: 400,	Batch Loss: 0.0002635
+    Batch: 500,	Batch Loss: 0.0002643
+    Batch: 600,	Batch Loss: 0.0002514
+Epoch    39: reducing learning rate of group 0 to 6.1413e-05.
+Epoch:  39,  train Loss: 0.00026,  validation Loss: 0.06118,  validation score: 0.79894,  current lr:  6.141250000000001e-05 , Time: 67.09 s
+    Batch: 100,	Batch Loss: 0.0002440
+    Batch: 200,	Batch Loss: 0.0002448
+    Batch: 300,	Batch Loss: 0.0002555
+    Batch: 400,	Batch Loss: 0.0002432
+    Batch: 500,	Batch Loss: 0.0002556
+    Batch: 600,	Batch Loss: 0.0002349
+Epoch:  40,  train Loss: 0.00025,  validation Loss: 0.06859,  validation score: 0.80372,  current lr:  6.141250000000001e-05 , Time: 67.06 s
+    Batch: 100,	Batch Loss: 0.0002368
+    Batch: 200,	Batch Loss: 0.0002439
+    Batch: 300,	Batch Loss: 0.0002301
+    Batch: 400,	Batch Loss: 0.0002263
+    Batch: 500,	Batch Loss: 0.0002411
+    Batch: 600,	Batch Loss: 0.0002431
+Epoch:  41,  train Loss: 0.00024,  validation Loss: 0.07838,  validation score: 0.80260,  current lr:  6.141250000000001e-05 , Time: 67.05 s
+    Batch: 100,	Batch Loss: 0.0002253
+    Batch: 200,	Batch Loss: 0.0002407
+    Batch: 300,	Batch Loss: 0.0002371
+    Batch: 400,	Batch Loss: 0.0002069
+    Batch: 500,	Batch Loss: 0.0002235
+    Batch: 600,	Batch Loss: 0.0002402
+Epoch:  42,  train Loss: 0.00023,  validation Loss: 0.07080,  validation score: 0.79963,  current lr:  6.141250000000001e-05 , Time: 67.06 s
+    Batch: 100,	Batch Loss: 0.0002253
+    Batch: 200,	Batch Loss: 0.0002374
+    Batch: 300,	Batch Loss: 0.0002485
+    Batch: 400,	Batch Loss: 0.0002385
+    Batch: 500,	Batch Loss: 0.0002371
+    Batch: 600,	Batch Loss: 0.0002338
+Epoch:  43,  train Loss: 0.00024,  validation Loss: 0.06847,  validation score: 0.78137,  current lr:  6.141250000000001e-05 , Time: 67.12 s
+    Batch: 100,	Batch Loss: 0.0002430
+    Batch: 200,	Batch Loss: 0.0002222
+    Batch: 300,	Batch Loss: 0.0002134
+    Batch: 400,	Batch Loss: 0.0002206
+    Batch: 500,	Batch Loss: 0.0002473
+    Batch: 600,	Batch Loss: 0.0002214
+Epoch:  44,  train Loss: 0.00023,  validation Loss: 0.06326,  validation score: 0.78321,  current lr:  6.141250000000001e-05 , Time: 66.97 s
+    Batch: 100,	Batch Loss: 0.0002338
+    Batch: 200,	Batch Loss: 0.0002264
+    Batch: 300,	Batch Loss: 0.0002189
+    Batch: 400,	Batch Loss: 0.0002218
+    Batch: 500,	Batch Loss: 0.0002244
+    Batch: 600,	Batch Loss: 0.0002393
+Epoch:  45,  train Loss: 0.00023,  validation Loss: 0.07879,  validation score: 0.79145,  current lr:  6.141250000000001e-05 , Time: 67.10 s
+    Batch: 100,	Batch Loss: 0.0002044
+    Batch: 200,	Batch Loss: 0.0002376
+    Batch: 300,	Batch Loss: 0.0002245
+    Batch: 400,	Batch Loss: 0.0002258
+    Batch: 500,	Batch Loss: 0.0002169
+    Batch: 600,	Batch Loss: 0.0002350
+Epoch:  46,  train Loss: 0.00022,  validation Loss: 0.07341,  validation score: 0.78924,  current lr:  6.141250000000001e-05 , Time: 66.99 s
+    Batch: 100,	Batch Loss: 0.0002146
+    Batch: 200,	Batch Loss: 0.0002158
+    Batch: 300,	Batch Loss: 0.0002148
+    Batch: 400,	Batch Loss: 0.0002094
+    Batch: 500,	Batch Loss: 0.0002274
+    Batch: 600,	Batch Loss: 0.0002498
+Epoch:  47,  train Loss: 0.00022,  validation Loss: 0.05749,  validation score: 0.79468,  current lr:  6.141250000000001e-05 , Time: 67.06 s
+    Batch: 100,	Batch Loss: 0.0002231
+    Batch: 200,	Batch Loss: 0.0003012
+    Batch: 300,	Batch Loss: 0.0002970
+    Batch: 400,	Batch Loss: 0.0003135
+    Batch: 500,	Batch Loss: 0.0002344
+    Batch: 600,	Batch Loss: 0.0002300
+Epoch:  48,  train Loss: 0.00026,  validation Loss: 0.07022,  validation score: 0.80117,  current lr:  6.141250000000001e-05 , Time: 67.09 s
+    Batch: 100,	Batch Loss: 0.0002103
+    Batch: 200,	Batch Loss: 0.0001957
+    Batch: 300,	Batch Loss: 0.0002149
+    Batch: 400,	Batch Loss: 0.0001976
+    Batch: 500,	Batch Loss: 0.0001876
+    Batch: 600,	Batch Loss: 0.0002024
+Epoch:  49,  train Loss: 0.00020,  validation Loss: 0.07220,  validation score: 0.79506,  current lr:  6.141250000000001e-05 , Time: 67.01 s
+    Batch: 100,	Batch Loss: 0.0002043
+    Batch: 200,	Batch Loss: 0.0001950
+    Batch: 300,	Batch Loss: 0.0001972
+    Batch: 400,	Batch Loss: 0.0001829
+    Batch: 500,	Batch Loss: 0.0002042
+    Batch: 600,	Batch Loss: 0.0002020
+Epoch    50: reducing learning rate of group 0 to 5.2201e-05.
+Epoch:  50,  train Loss: 0.00020,  validation Loss: 0.07678,  validation score: 0.79476,  current lr:  5.2200625000000005e-05 , Time: 67.01 s
+    Batch: 100,	Batch Loss: 0.0001882
+    Batch: 200,	Batch Loss: 0.0001848
+    Batch: 300,	Batch Loss: 0.0001809
+    Batch: 400,	Batch Loss: 0.0001900
+    Batch: 500,	Batch Loss: 0.0002061
+    Batch: 600,	Batch Loss: 0.0002132
+Epoch:  51,  train Loss: 0.00019,  validation Loss: 0.07767,  validation score: 0.78917,  current lr:  5.2200625000000005e-05 , Time: 66.99 s
+    Batch: 100,	Batch Loss: 0.0001849
+    Batch: 200,	Batch Loss: 0.0001887
+    Batch: 300,	Batch Loss: 0.0001917
+    Batch: 400,	Batch Loss: 0.0001863
+    Batch: 500,	Batch Loss: 0.0001851
+    Batch: 600,	Batch Loss: 0.0002099
+Epoch:  52,  train Loss: 0.00019,  validation Loss: 0.06940,  validation score: 0.79640,  current lr:  5.2200625000000005e-05 , Time: 66.94 s
+    Batch: 100,	Batch Loss: 0.0001834
+    Batch: 200,	Batch Loss: 0.0001909
+    Batch: 300,	Batch Loss: 0.0001789
+    Batch: 400,	Batch Loss: 0.0001928
+    Batch: 500,	Batch Loss: 0.0001820
+    Batch: 600,	Batch Loss: 0.0001895
+Epoch:  53,  train Loss: 0.00019,  validation Loss: 0.07363,  validation score: 0.80270,  current lr:  5.2200625000000005e-05 , Time: 66.95 s
+    Batch: 100,	Batch Loss: 0.0001830
+    Batch: 200,	Batch Loss: 0.0001817
+    Batch: 300,	Batch Loss: 0.0001961
+    Batch: 400,	Batch Loss: 0.0001886
+    Batch: 500,	Batch Loss: 0.0001940
+    Batch: 600,	Batch Loss: 0.0001860
+Epoch:  54,  train Loss: 0.00019,  validation Loss: 0.07636,  validation score: 0.80155,  current lr:  5.2200625000000005e-05 , Time: 66.93 s
+    Batch: 100,	Batch Loss: 0.0001793
+    Batch: 200,	Batch Loss: 0.0001797
+    Batch: 300,	Batch Loss: 0.0001814
+    Batch: 400,	Batch Loss: 0.0001928
+    Batch: 500,	Batch Loss: 0.0001967
+    Batch: 600,	Batch Loss: 0.0001940
+Epoch:  55,  train Loss: 0.00019,  validation Loss: 0.08116,  validation score: 0.79888,  current lr:  5.2200625000000005e-05 , Time: 66.99 s
+    Batch: 100,	Batch Loss: 0.0002052
+    Batch: 200,	Batch Loss: 0.0001824
+    Batch: 300,	Batch Loss: 0.0001775
+    Batch: 400,	Batch Loss: 0.0001832
+    Batch: 500,	Batch Loss: 0.0001792
+    Batch: 600,	Batch Loss: 0.0001869
+Epoch:  56,  train Loss: 0.00019,  validation Loss: 0.07279,  validation score: 0.79828,  current lr:  5.2200625000000005e-05 , Time: 67.13 s
+    Batch: 100,	Batch Loss: 0.0001872
+    Batch: 200,	Batch Loss: 0.0001791
+    Batch: 300,	Batch Loss: 0.0001895
+    Batch: 400,	Batch Loss: 0.0001872
+    Batch: 500,	Batch Loss: 0.0001863
+    Batch: 600,	Batch Loss: 0.0001858
+Epoch:  57,  train Loss: 0.00019,  validation Loss: 0.07357,  validation score: 0.79207,  current lr:  5.2200625000000005e-05 , Time: 67.13 s
+    Batch: 100,	Batch Loss: 0.0001728
+    Batch: 200,	Batch Loss: 0.0001794
+    Batch: 300,	Batch Loss: 0.0001801
+    Batch: 400,	Batch Loss: 0.0001740
+    Batch: 500,	Batch Loss: 0.0001763
+    Batch: 600,	Batch Loss: 0.0001874
+Epoch:  58,  train Loss: 0.00018,  validation Loss: 0.07582,  validation score: 0.79923,  current lr:  5.2200625000000005e-05 , Time: 67.01 s
+    Batch: 100,	Batch Loss: 0.0001881
+    Batch: 200,	Batch Loss: 0.0001711
+    Batch: 300,	Batch Loss: 0.0001744
+    Batch: 400,	Batch Loss: 0.0001830
+    Batch: 500,	Batch Loss: 0.0001792
+    Batch: 600,	Batch Loss: 0.0001772
+Epoch:  59,  train Loss: 0.00018,  validation Loss: 0.07355,  validation score: 0.79829,  current lr:  5.2200625000000005e-05 , Time: 66.96 s
+    Batch: 100,	Batch Loss: 0.0001927
+    Batch: 200,	Batch Loss: 0.0001906
+    Batch: 300,	Batch Loss: 0.0001836
+    Batch: 400,	Batch Loss: 0.0001670
+    Batch: 500,	Batch Loss: 0.0001711
+    Batch: 600,	Batch Loss: 0.0001830
+Epoch:  60,  train Loss: 0.00018,  validation Loss: 0.08004,  validation score: 0.80178,  current lr:  5.2200625000000005e-05 , Time: 66.86 s
+Training Finished after 60 epoches
+Training history has been saved to loss.png
+Starting Test Process 
+
+Dice Score 0.8338323765731209
+
+/content/SPLAE/utils/visualize_result.py:55: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
+Predictions has been saved to predictions+(num_of_pred).png
