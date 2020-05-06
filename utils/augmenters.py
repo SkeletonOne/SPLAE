@@ -7,7 +7,7 @@ import scipy.ndimage
 import random
 from PIL import Image
 
-#Define some data augmentation functions here. Can be called in main.py
+#Define some data augmentation functions here. Can be called in generate_2D_imgs.py
 
 def select_data_for_augmentation(img_path, count):
     for dirName, subdirList, fileList in os.walk(img_path):

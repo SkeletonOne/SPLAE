@@ -5,7 +5,7 @@ import SimpleITK as sitk
 import skimage.io as io
 
 from utils.data_preprocessing import smooth_images, hist_equal
-from utils.augmenters import select_data_for_augmentation, rotate
+from utils.augmenters import select_data_for_augmentation
 
 # Generate 2D images here, which is the first process of make our dataset. Called in main.py.
 

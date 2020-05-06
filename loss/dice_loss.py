@@ -50,6 +50,8 @@ class BinaryDiceLoss(nn.Module):
         self.reduction = reduction
 
     def forward(self, predict, target):
+        predict = predict.squeeze()
+        target = target.squeeze()
         assert predict.shape[0] == target.shape[0], "predict & target batch size don't match"
         predict = predict.contiguous().view(predict.shape[0], -1)
         target = target.contiguous().view(target.shape[0], -1)
