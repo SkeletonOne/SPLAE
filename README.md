@@ -4,12 +4,13 @@
 
 # Results
 
-All models were trained with BS = 8, Epochs = 60 Lr = 1e-4.
+All models were trained with BS = 8, Epochs = 60 Lr = 1e-4(reduce on plateau).
 
 Model | Aug | Dice Score | Loss
 --- |:---:|:---:|:---:
-U-Net | Rot | 0.7649910148678267 | BCE
-U-Net | Rot+HFlip+VFlip | 0.7820317164718084 | BCE
+U-Net_512 | Rot | 0.7649910148678267 | BCE
+U-Net_512 | Rot+HFlip+VFlip | 0.7820317164718084 | BCE
+U-Net_256 | Rot+HFlip+VFlip | 0.8338323765731209 | BCE
 
 ![U-Net Loss Graph](README_IMGS/TrainValLoss.png)
 ![U-Net Segment Result](README_IMGS/Predictions.png)
@@ -26,6 +27,16 @@ Easy enough!
 The hyperparameters are in `main.py`. Change them to whatever you want.
 
 Note that the original implementation(for brain tumor) made a threshold=0.5 for val/test, so the val score does not change initially(because the output are totally 0 after the threshold...). But after a few epochs it will become normal.
+
+# Currently Support
+
+- [x] [U-Net](https://arxiv.org/abs/1505.04597)
+- [x] [R2U-Net](https://arxiv.org/abs/1802.06955)
+- [x] [AttU-Net](https://arxiv.org/abs/1804.03999)
+- [x] [R2AttU-Net](https://github.com/LeeJunHyun/Image_Segmentation)
+- [x] [NestedU-Net](https://arxiv.org/pdf/1807.10165.pdf)
+
+Will implement more networks soon.
 
 # Todo List
 - [x] [Data Augmentation]

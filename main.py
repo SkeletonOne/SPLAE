@@ -43,6 +43,7 @@ BATCH_SIZE = 8
 epochs = 60
 learning_rate = 1e-4
 loss = 'bce'
+scheduler = 'reduce'
 #################################### Hyper params end ####################################################
 
 print('\033[1;36mComputation Details: \033[0m')
@@ -111,7 +112,12 @@ last_score = 0
 optimizer = optim.Adam(unet_model.parameters(), lr = learning_rate)
 
 # Reducing LR on plateau feature to improve training.
-scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor = 0.85, patience = 10, verbose = True)
+if scheduler == 'step':
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size = epochs/2, gamma=0.1, last_epoch=-1)
+elif scheduler == 'reduce':
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor = 0.85, patience = 10, verbose = True)
+else:
+    raise NotImplementedError("The learning rate scheduler is not implemented: %s"(scheduler))
 
 print('\033[1;34mStarting Training Process \033[0m')
 
