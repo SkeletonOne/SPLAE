@@ -59,6 +59,9 @@ def vertical_flip(img, lbl):
     return img_vf, lbl_vf
 
 def center_crop(img, lbl, size = 256):
+    ori_size = img.size()[1]
     img_ccrop = torchvision.transforms.functional.center_crop(img, size)
+    img_ccrop = torchvision.transforms.functional.resize(img_ccrop, (ori_size, ori_size))
     lbl_ccrop = torchvision.transforms.functional.center_crop(lbl, size)
+    lbl_ccrop = torchvision.transforms.functional.resize(lbl_ccrop, (ori_size, ori_size))
     return img_ccrop, lbl_ccrop
