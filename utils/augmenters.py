@@ -31,12 +31,19 @@ def select_data_for_augmentation(img_path, count):
                   cv2.imwrite('./imgs/'+str(count)+'.png',np.array(img_vf))
                   cv2.imwrite('./imgs/'+str(count)+'_mask.png',np.array(lbl_vf))
                   count+=1
+                  # Do center crop
+                  img_ccrop, lbl_ccrop = center_crop(img, lbl, 128)
+                  cv2.imwrite('./imgs/'+str(count)+'.png',np.array(img_ccrop))
+                  cv2.imwrite('./imgs/'+str(count)+'_mask.png',np.array(lbl_ccrop))
+                  count+=1
     return count
                 
 def rotate(img, lbl, theta = None):
     # Rotate volume by a minor angle (+/- 10 degrees: determined by investigation of dataset variability)
     if theta is None:
-        theta = random.randint(-10, 10)
+        thetas = [-10, 10]
+        rotate_direction = random.randint(0, 1)
+        theta = thetas[rotate_direction]
     img_rot = scipy.ndimage.interpolation.rotate(img, theta, reshape = False)
     lbl_rot = scipy.ndimage.interpolation.rotate(lbl, theta, reshape = False)
     return img_rot, lbl_rot
@@ -50,3 +57,8 @@ def vertical_flip(img, lbl):
     img_vf = torchvision.transforms.functional.vflip(img)
     lbl_vf = torchvision.transforms.functional.vflip(lbl)
     return img_vf, lbl_vf
+
+def center_crop(img, lbl, size = 256):
+    img_ccrop = torchvision.transforms.functional.center_crop(img, size)
+    lbl_ccrop = torchvision.transforms.functional.center_crop(lbl, size)
+    return img_ccrop, lbl_ccrop

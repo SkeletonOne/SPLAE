@@ -16,7 +16,7 @@ from models.nestedu_net import NestedUNet
 from utils.generate_2D_imgs import generate_2D_imgs
 from utils.dice_coefficient import dice_coefficient
 from utils.visualize_result import visualize_result
-from loss.dice_loss import BinaryDiceLoss, CosDiceLoss, DiceLoss
+from loss.dice_loss import BinaryDiceLoss, CosDiceLoss, DiceLoss, BCE_DiceLoss
 from tools.visualize_gt import visualize_gt
 
 #################################### Hyper params start ##################################################
@@ -29,16 +29,16 @@ file_path = '/content/dataset'
 save_path = './imgs/'
 model_save_path = './saved_models/'
 ################ DATA ############
-train_num, val_num, test_num = 5000, 127, 127
-do_smooth = False
-do_hist_equalize = False
-do_normalize = False
-do_data_augmentation = False
+train_num, val_num, test_num = 7500, 127, 127
+do_smooth = True
+do_hist_equalize = True
+do_normalize = True
+do_data_augmentation = True
 ################ MODEL ###########
 models = [U_Net(), R2U_Net(), AttU_Net(), R2AttU_Net(), NestedUNet()]
 model_used = models[0]
 print_model = True
-input_length = 512
+input_length = 256 # It seems 256*256 generates a better result.
 BATCH_SIZE = 8
 epochs = 60
 learning_rate = 1e-4
@@ -84,6 +84,8 @@ if loss == 'bce':
     criterion = nn.BCELoss()
 elif loss == 'dice':
     criterion = BinaryDiceLoss()
+elif loss == 'bcedice':
+    criterion = BCE_DiceLoss()
 elif loss == 'cosdice':
     criterion = CosDiceLoss()
 else:

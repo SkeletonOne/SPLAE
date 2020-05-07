@@ -86,6 +86,16 @@ class CosDiceLoss(nn.Module):
         cos_dice = (torch.cos(0.5 * math.pi * dice_loss)) ** self.q
         return cos_dice
 
+class BCE_DiceLoss(nn.Module):
+    """The sum of BCE loss and DiceLoss
+    """
+    def __init__(self):
+        super(BCE_DiceLoss, self).__init__()
+    def forward(self, predict, target):
+        bce = nn.BCELoss()
+        bdl = BinaryDiceLoss()
+        return bce(predict, target) + bdl(predict, target)
+
 class DiceLoss(nn.Module):
     """Dice loss, need one hot encode input
     Args:
