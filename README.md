@@ -11,6 +11,7 @@ Model | Aug | Dice Score | Loss
 U-Net_512 | Rot | 0.7649910148678267 | BCE
 U-Net_512 | Rot+HFlip+VFlip | 0.7820317164718084 | BCE
 [U-Net_256](logs/unet_256.txt) | Rot+HFlip+VFlip | 0.8338323765731209 | BCE
+Nested U-Net | Rot+HFlip+VFlip | 0.8211480012615079 | BCE
 
 ![U-Net Loss Graph](README_IMGS/TrainValLoss.png)
 ![U-Net Segment Result](README_IMGS/Predictions.png)
@@ -45,6 +46,19 @@ Will implement more networks soon.
 - [ ] [Support multi-class segmentation]
 - [x] [Support more networks]
 - [ ] [Transform the output to 3D slices for submission]
+
+## Citing SPLAE
+
+If you use SPLAE in your research, please use the following BibTeX entry.
+
+```BibTeX
+@misc{liu2020splae,
+  author =       {Xinyu Liu},
+  title =        {SPLAE},
+  howpublished = {\url{https://github.com/xinyuliu-jeffrey/SPLAE}},
+  year =         {2020}
+}
+```
 
 # Acknowlegement
 This project is mainly based on [Brain Tumor Segmentation](https://github.com/sdsubhajitdas/Brain-Tumor-Segmentation) by Subhajit Das and [Unet-Segmentation-Pytorch-Nest-of-Unets](https://github.com/bigmb/Unet-Segmentation-Pytorch-Nest-of-Unets) by Malav Bateriwala. Appreciate for their great work.
